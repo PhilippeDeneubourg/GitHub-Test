@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>PostgreSQL CHEAT SHEET</title>
+
+        <link rel="shortcut icon" href="./assets/LogoPostgreSQL.png">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header class="headerGridContainer">
+            <div id=headerTitle1>
+                PostgreSQL CHEAT SHEET
+            </div>
+
+            <div id=headerTitle2>
+                <a href="http://www.postgresqltutorial.com" target="_blank">http://www.postgresqltutorial.com</a>
+            </div>
+
+            <div id=headerTitleImage>
+                <img src="./assets/Logo.png" alt="logo" width=50px>
+            </div>
+        </header>
+
+        <main class="mainGridContainer">
+            <!-- Line 1 / Column 1 -->
+            <div class="mainColumn" id=column1>
+                <div class="mainColumnTitle">
+                    querying data from table
+                    <hr>
+                </div>
+                <div class="mainColumnContent">
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2 <span class="textBlue">FROM</span> t;<br>
+                        Query data in columns c1, c2 from a table<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> * <span class="textBlue">FROM</span> t;<br>
+                        Query all rows and columns from a table<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2 <span class="textBlue">FROM</span> t<br>
+                        <span class="textBlue">WHERE</span> condition;<br>
+                        Query data and filter rows with a condition<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT DISTINCT</span> c1 <span class="textBlue">FROM</span> t<br>
+                        <span class="textBlue">WHERE</span> condition;<br>
+                        Query distinct rows from a table<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2 <span class="textBlue">FROM</span> t<br>
+                        <span class="textBlue">ORDER BY</span> c1 <span class="textPurple">ASC [DESC]</span>;<br>
+                        Sort the result set in ascending or descending order<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2 <span class="textBlue">FROM</span> t<br>
+                        <span class="textBlue">ORDER BY</span> c1<br>
+                        <span class="textBlue">LIMIT</span> n <span class="textBlue">OFFSET</span> offset;<br>
+                        Skip <i>offset</i> of rows and return the next n rows<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, <span class="textGreen">aggregate</span>(c2)<br>
+                        <span class="textBlue">FROM</span> t<br>
+                        <span class="textBlue">GROUP BY</span> c1;<br>
+                        Group rows using an aggregate function<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, <span class="textGreen">aggregate</span>(c2)<br>
+                        <span class="textBlue">FROM</span> t<br>
+                        <span class="textBlue">GROUP BY</span> c1<br>
+                        <span class="textBlue">HAVING</span> condition;<br>
+                        Filter groups using HAVING clause
+                    </p>
+                </div>
+            </div>
+            <!-- Line 1 / Column 2 -->
+            <div class="mainColumn" id=column2>
+                <div class="mainColumnTitle">
+                    querying data from multiple tables
+                    <hr>
+                </div>
+                <div>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2<br>
+                        <span class="textBlue">FROM</span> t1<br>
+                        <span class="textBlue">INNER JOIN</span> t2 <span class="textBlue">ON</span> condition;<br>
+                        Inner join t1 and t2<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2<br>
+                        <span class="textBlue">FROM</span> t1<br>
+                        <span class="textBlue">LEFT JOIN</span> t2 <span class="textBlue">ON</span> condition;<br>
+                        Left join t1 and t1<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2<br>
+                        <span class="textBlue">FROM</span> t1<br>
+                        <span class="textBlue">RIGHT JOIN</span> t2 <span class="textBlue">ON</span> condition;<br>
+                        Right join t1 and t2<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2<br>
+                        <span class="textBlue">FROM</span> t1<br>
+                        <span class="textBlue">FULL OUTER JOIN</span> t2 <span class="textBlue">ON</span> condition;<br>
+                        Perform full outer join<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2<br>
+                        <span class="textBlue">FROM</span> t1<br>
+                        <span class="textBlue">CROSS JOIN</span> t2;<br>
+                        Produce a Cartesian product of rows in tables<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2<br>
+                        <span class="textBlue">FROM</span> t1, t2;<br>
+                        Another way to perform cross join<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2<br>
+                        <span class="textBlue">FROM</span> t1 A<br>
+                        <span class="textBlue">INNER JOIN</span> t2 B <span class="textBlue">ON</span> condition;<br>
+                        Join t1 to itself using INNER JOIN clause
+                    </p>
+                </div>
+            </div>
+            <!-- Line 1 / Column 3 -->
+            <div class="mainColumn" id=column3>
+                <div class="mainColumnTitle">
+                    using sql operators
+                    <hr>
+                </div>
+                <div>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2 <span class="textBlue">FROM</span> t1<br>
+                        <span class="textPurple">UNION [ALL]</span><br>
+                        <span class="textBlue">SELECT</span> c1, c2 <span class="textBlue">FROM</span> t2;<br>
+                        Combine rows from two queries<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2 <span class="textBlue">FROM</span> t1<br>
+                        <span class="textPurple">INTERSECT</span><br>
+                        <span class="textBlue">SELECT</span> c1, c2 <span class="textBlue">FROM</span> t2;<br>
+                        Return the intersection of two queries<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2 <span class="textBlue">FROM</span> t1<br>
+                        <span class="textPurple">EXCEPT</span><br>
+                        <span class="textBlue">SELECT</span> c1, c2 <span class="textBlue">FROM</span> t2;<br>
+                        Subtract a result set from another result set<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2 <span class="textBlue">FROM</span> t1<br>
+                        <span class="textBlue">WHERE</span> c1 <span class="textPurple">[NOT] LIKE pattern</span>;<br>
+                        Query rows using pattern matching %, _<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2 <span class="textBlue">FROM</span> t<br>
+                        <span class="textBlue">WHERE</span> c1 <span class="textPurple">[NOT] IN value_list</span>;<br>
+                        Query rows in a list<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2 <span class="textBlue">FROM</span> t<br>
+                        <span class="textBlue">WHERE</span> c1 <span class="textPurple">BETWEEN</span> low <span class="textPurple">AND</span> high;<br>
+                        Query rows between two values<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SELECT</span> c1, c2 <span class="textBlue">FROM</span> t<br>
+                        <span class="textBlue">WHERE</span> c1 <span class="textPurple">IS [NOT] NULL</span>;<br>
+                        Check if values in a table is NULL or not
+                    </p>
+                </div>
+            </div>
+            <!-- Line 2 / Column 4 -->
+            <div class="mainColumn" id=column4>
+                <div class="mainColumnTitle">
+                    managing tables
+                    <hr>
+                </div>
+                <div>
+                    <p>
+                        <span class="textBlue">CREATE TABLE</span> t(<br>
+                        <span class="indent">
+                            id <span class="textBlue">SERIAL</span> <span class="textGreen">PRIMARY KEY</span>,<br>
+                        </span>
+                        <span class="indent">
+                            name <span class="textBlue">VARCHAR</span> <span class="textGreen">NOT NULL</span>,<br>
+                        </span>
+                        <span class="indent">
+                            price <span class="textBlue">NUMERIC(10,2)</span> <span class="textGreen">DEFAULT 0</span><br>
+                        </span>
+                        );<br>
+                        Create a new table with three columns<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">DROP TABLE</span> t <span class="textBlue">CASCADE</span>;<br>
+                        Delete the table from the database<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">ALTER TABLE</span> t <span class="textBlue">ADD</span> column;<br>
+                        Add a new column to the table<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">ALTER TABLE</span> t <span class="textBlue">DROP COLUMN</span> c;<br>
+                        Drop column c from the table<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">ALTER TABLE</span> t <span class="textBlue">ADD</span> constraint;<br>
+                        Add a constraint<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">ALTER TABLE</span> t <span class="textBlue">DROP</span> constraint;<br>
+                        Drop a constraint<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">ALTER TABLE</span> t1 <span class="textBlue">RENAME TO</span> t2;<br>
+                        Rename a table from t1 to t2<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">ALTER TABLE</span> t1 <span class="textBlue">RENAME</span>  c1 <span class="textBlue">TO</span> c2;<br>
+                        Rename column c1 to c2<br>
+                    </p>
+                    <p>  
+                        <span class="textBlue">TRUNCATE TABLE</span> t <span class="textBlue">CASCADE</span>;<br>
+                        Remove all data in a table
+                    </p>                
+                </div>
+            </div>
+            <!-- Line 2 / Column 5 -->
+            <div class="mainColumn" id=column5>
+                <div class="mainColumnTitle">
+                    using sql constraints
+                    <hr>
+                </div>
+                <div>
+                    <p>
+                        <span class="textBlue">CREATE TABLE</span> t(<br>
+                        <span class="indent">
+                            c1 <span class="textBlue">INT</span>, c2 <span class="textBlue">INT</span>, c3 <span class="textBlue">VARCHAR</span>,<br>
+                        </span>
+                        <span class="indent">
+                            <span class="textGreen">PRIMARY KEY</span> (c1,c2<br>
+                        </span>
+                        );<br>
+                        Set c1 and c2 as a primary key<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">CREATE TABLE</span> t1(<br>
+                        <span class="indent">
+                            c1 <span class="textBlue">SERIAL</span> <span class="textGreen">PRIMARY KEY</span>,<br>
+                        </span>
+                        <span class="indent">
+                            c2 <span class="textBlue">INT</span>,<br>
+                        </span>
+                        <span class="indent">
+                            <span class="textGreen">FOREIGN KEY</span> (c2) <span class="textGreen">REFERENCES</span> t2(c2)<br>
+                        </span>
+                        );<br>
+                        Set c2 column as a foreign key<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">CREATE TABLE</span> t(<br>
+                        <span class="indent">
+                            c1 <span class="textBlue">INT</span>, c1 <span class="textBlue">INT</span>,<br>
+                        </span>
+                        <span class="indent">
+                            <span class="textGreen">UNIQUE</span>(c2,c3<br>
+                        </span>
+                        );<br>
+                        Make the values in c1 and c2 unique<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">CREATE TABLE</span> t(<br>
+                        <span class="indent">
+                            c1 <span class="textBlue">INT</span>, c2 <span class="textBlue">INT</span>,<br>
+                        </span>
+                        <span class="indent">
+                            <span class="textGreen">CHECK</span>(c1> 0 AND c1 >= c2<br>
+                        </span>
+                        );<br>
+                        Ensure c1 > 0 and values in c1 >= c2<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">CREATE TABLE</span> t(<br>
+                        <span class="indent">
+                            c1 <span class="textBlue">SERIAL</span> <span class="textGreen">PRIMARY KEY</span><br>
+                        </span>
+                        <span class="indent">
+                            c2 <span class="textBlue">VARCHAR</span> <span class="textGreen">NOT NULL</span><br>
+                        </span>
+                        );<br>
+                        Set values in c2 column not NULL
+                    </p>
+                </div>
+            </div>
+            <!-- Line 2 / Column 6 -->
+            <div class="mainColumn" id=column6>
+                <div class="mainColumnTitle">
+                    modifying data
+                    <hr>
+                </div>
+                <div>
+                    <p>
+                        <span class="textBlue">INSERT INTO</span> t(column_list)<br>
+                        <span class="textBlue">VALUES</span>(value_list);<br>
+                        Insert one row into a table<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">INSERT INTO</span> t(column_list)<br>
+                        <span class="textBlue">VALUES</span>(value_list),<br>
+                        <span class="indent">
+                            <span class="indent">
+                                <span class="indent">
+                                    (value_list), ...;<br>
+                                </span>
+                            </span>
+                        </span>
+                        Insert multiple rows into a table<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">INSERT INTO</span> t1(column_list)<br>
+                        <span class="textBlue">SELECT</span> column_list<br>
+                        <span class="textBlue">FROM</span> t2;<br>
+                        Insert rows from t2 into t1<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">UPDATE</span> t<br>
+                        <span class="textBlue">SET</span> c1 = new_value;<br>
+                        Update new value in the column c1 for all rows<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">UPDATE</span> t<br>
+                        <span class="textBlue">SET</span> c1 = new_value,<br>
+                        <span class="indent">
+                            <span class="indent">
+                                c2 = new_value<br>
+                            </span>
+                        </span>
+                        <span class="textBlue">WHERE</span> condition;<br>
+                        Update values in the column c1, c2 that match the condition<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">DELETE FROM</span> t;<br>
+                        Delete all data in a table<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">DELETE FROM</span> t<br>
+                        <span class="textBlue">WHERE</span> condition;<br>
+                        Delete subset of rows in a table
+                    </p>
+                </div>
+            </div>
+            <!-- Line 3 / Column 7 -->
+            <div class="mainColumn" id=column7>
+                <div class="mainColumnTitle">
+                    managing views
+                    <hr>
+                </div>
+                <div>
+                    <p>
+                        <span class="textBlue">CREATE VIEW</span> v(c1,c2)<br>
+                        <span class="textBlue">AS</span><br>
+                        <span class="textBlue">SELECT</span> c1, c2<br>
+                        <span class="textBlue">FROM</span> t;<br>
+                        Create a new view that consists of c1 and c2<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">CREATE VIEW</span> v(c1,c2)<br>
+                        <span class="textBlue">AS</span><br>
+                        <span class="textBlue">SELECT</span> c1, c2<br>
+                        <span class="textBlue">FROM</span> t;<br>
+                        <span class="textBlue">WITH</span> <span class="textPurple">[CASCADED | LOCAL]</span> <span class="textBlue">CHECK OPTION</span>;<br>
+                        Create a new view with check option<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">CREATE</span> <span class="textPurple">RECURSIVE</span> <span class="textBlue">VIEW</span> v<br>
+                        <span class="textBlue">AS</span><br>
+                        select-statement <i><span class="textGrey">-- anchor part</span></i><br>
+                        <span class="textBlue">UNION [ALL]</span><br>
+                        select-statement; <i><span class="textGrey">-- recursive part</span></i><br>
+                        Create a recursive view<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">CREATE</span> <span class="textPurple">TEMPORARY</span> <span class="textBlue">VIEW</span> v<br>
+                        <span class="textBlue">AS</span><br>
+                        <span class="textBlue">SELECT</span> c1, c2<br>
+                        <span class="textBlue">FROM</span> t;<br>
+                        Create a temporary view<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">DROP VIEW</span> view_name;<br>
+                        Delete a view
+                    </p>
+                </div>
+            </div>
+            <!-- Line 3 / Column 8 / Part 1 -->
+            <div class="mainColumn" id=column8>
+                <div class="mainColumnTitle">
+                    managing indexes
+                    <hr>
+                </div>
+                <div>
+                    <p>
+                        <span class="textBlue">CREATE INDEX</span> idx_name<br>
+                        <span class="textBlue">ON</span> t(c1,c2);<br>
+                        Create an index on c1 and c2 of the table t<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">CREATE UNIQUE INDEX</span> idx_name<br>
+                        <span class="textBlue">ON</span> t(c3,c4);<br>
+                        Create a unique index on c3, c4 of the table t<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">DROP INDEX</span> idx_name<br>
+                        Drop an index
+                    </p>
+                    <br>
+                </div>
+            <!-- Line 3 / Column 8 / Part 2 -->
+                <div class="mainColumnTitle">
+                    sql aggregate functions
+                    <hr>
+                </div>
+               <div>
+                    <p>
+                        <span class="textBlue">AVG</span> returns the average of a list<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">COUNT</span> returns the number of elements of a list<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">SUM</span> returns the total of a list<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">MAX</span> returns the maximum value in a list<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">MIN</span> returns the minimum value in a list
+                    </p>
+               </div>
+            </div>
+            <!-- Line 3 / Column 9 -->
+            <div class="mainColumn" id=column9>
+                <div class="mainColumnTitle">
+                    managing triggers
+                    <hr>
+                </div>
+                <div>
+                    <p>
+                        <span class="textBlue">CREATE OR MODIFY TRIGGER</span> trigger_name<br>
+                        <span class="textPurple">WHEN EVENT</span><br>
+                        <span class="textBlue">ON</span> table_name <span class="textPurple">TRIGGER_TYPE</span><br>
+                        <span class="textBlue">EXECUTE</span> stored_procedure;<br>
+                        Create or modify a trigger<br>
+                    </p>
+                    <p class="marginBottom0">
+                        <span class="textPurple">WHEN</span>
+                        <ul>
+                            <li><span class="textGreen">BEFORE</span> - invoke before the event occurs</li>
+                            <li><span class="textGreen">AFTER</span> - invoke after the event occurs</li>
+                        </ul>
+                    </p>
+                    <p class="marginBottom0">  
+                        <span class="textPurple">EVENT</span>
+                        <ul>
+                            <li><span class="textGreen">INSERT</span> - invoke for INSERT</li>
+                            <li><span class="textGreen">UPDATE</span> - invoke for UPDATE</li>
+                            <li><span class="textGreen">DELETE</span> - invoke for DELETE</li>
+                        </ul>
+                    </p>
+                    <p class="marginBottom0">
+                        <span class="textPurple">TRIGGER_TYPE</span>
+                        <ul>
+                            <li><span class="textGreen">FOR EACH ROW</span></li>
+                            <li><span class="textGreen">FOR EACH STATEMENT</span></li>
+                        </ul>
+                    </p>
+                    <p>
+                        <span class="textBlue">CREATE TRIGGER</span> before_insert_person<br>
+                        <span class="textPurple">BEFORE INSERT</span><br>
+                        <span class="textBlue">ON</span> person <span class="textPurple">FOR EACH ROW</span><br>
+                        <span class="textBlue">EXECUTE</span> stored_procedure;<br>
+                        Create a trigger invoked before a new row is inserted into the person table<br>
+                    </p>
+                    <p>
+                        <span class="textBlue">DROP TRIGGER</span> trigger_name;<br>
+                        Delete a specific trigger
+                    </p>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
